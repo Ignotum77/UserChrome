@@ -1,0 +1,139 @@
+@charset "UTF-8";
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+@namespace html "http://www.w3.org/1999/xhtml";
+
+/** Theme *********************************************************************/
+/*= System Default Theme =====================================================*/
+@media (-moz-windows-accent-color-in-titlebar), (-moz-gtk-csd-available) {
+  /* URL Bar */
+  :root:is([tabsintitlebar], [customtitlebar]):not(:-moz-window-inactive):is(:not([lwtheme]), :not(:-moz-lwtheme)),
+  :root:is([tabsintitlebar], [customtitlebar])[lwt-default-theme-in-dark-mode]:not(:-moz-window-inactive) {
+    --focus-outline-color: AccentColor !important;
+  }
+  :root:is([tabsintitlebar], [customtitlebar]):not(:-moz-window-inactive):is(:not([lwtheme]), :not(:-moz-lwtheme)) #urlbar[open] > #urlbar-background,
+  :root:is([tabsintitlebar], [customtitlebar])[lwt-default-theme-in-dark-mode]:not(:-moz-window-inactive) #urlbar[open] > #urlbar-background {
+    border-color: color-mix(in srgb, AccentColor 50%, transparent) !important;
+  }
+}
+
+/** Padding ********************************************************************/
+/*= Tabbar ====================================================================*/
+/* Display close button */
+#tabbrowser-tabs[closebuttons="activetab"][orient="horizontal"] .tab-close-button:not([selected], [pinned]) {
+  display: initial !important;
+}
+/*= Bookmark Menu - Reduce Padding ===========================================*/
+:root[uidensity="compact"] #BMB_bookmarksPopup {
+  --panel-menuitem-padding-block: 3px !important;
+}
+:root:not([uidensity="compact"]):not([uidensity="touch"]) #BMB_bookmarksPopup {
+  --panel-menuitem-padding-block: 6px !important;
+}
+:root[uidensity="touch"] #BMB_bookmarksPopup {
+  --panel-menuitem-padding-block: 6px !important;
+}
+
+/** Unloaded Tab - Contents Opacity *******************************************/
+.tabbrowser-tab[pending] .tab-content {
+  opacity: 0.7;
+}
+
+/** Tab - Show Favicons Always ************************************************/
+#tabbrowser-tabs[orient="horizontal"] .tab-icon-image:not([src], [pinned], [crashed], [sharing], [pictureinpicture], [busy]) {
+  display: flex !important;
+}
+
+/** Nova improvements *********************************************************/
+@media -moz-pref("browser.nova.enabled") {
+  /*= Restore Proton border radii ============================================*/
+  :root {
+    --border-radius-xsmall: 2px !important;
+    --border-radius-small: 4px !important;
+    --border-radius-medium: 8px !important;
+    --border-radius-large: 16px !important;
+    --border-radius-xlarge: 16px !important;
+    /* Tabs, buttons and toolbar controls */
+    --tab-border-radius: var(--border-radius-medium) !important;
+    --button-border-radius: var(--border-radius-medium) !important;
+    --toolbarbutton-border-radius: var(--border-radius-medium) !important;
+    /* Address bar, panels, menus and popups */
+    --urlbar-icon-border-radius: var(--border-radius-medium) !important;
+    --arrowpanel-border-radius: var(--border-radius-medium) !important;
+    --panel-border-radius: var(--border-radius-medium) !important;
+    --popup-border-radius: var(--border-radius-medium) !important;
+    --panel-menuitem-border-radius: var(--border-radius-small) !important;
+    --menuitem-border-radius: var(--border-radius-small) !important;
+    --urlbar-inner-border-radius: calc(var(--urlbar-border-radius) - 1px) !important;
+    --input-text-border-radius: 4px !important;
+    --card-border-radius: var(--border-radius-medium) !important;
+  }
+  /* Context menu */
+  menu, menuitem, menucaption {
+    border-radius: var(--border-radius-small, --menuitem-border-radius) !important;
+  }
+  /*= Container Tab Context Line =============================================*/
+  :root {
+    --tab-context-line-block-offset: 2px !important;
+    &[uidensity="compact"] {
+      --tab-context-line-block-offset: 1px !important;
+      --tab-context-line-inline-offset: var(--tab-padding-inline) !important;
+    }
+  }
+  .tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-context-line {
+    height: 2px !important;
+    @media -moz-pref("sidebar.verticalTabs") {
+      height: 3px !important;
+    }
+  }
+  /* Identity Color */
+  .identity-color-blue {
+    --identity-fill-color: #37adff !important;
+    --identity-stroke-color: #37adff !important;
+  }
+  .identity-color-cyan {
+    --identity-fill-color: #00c79a !important;
+    --identity-stroke-color: #00c79a !important;
+  }
+  .identity-color-green {
+    --identity-fill-color: #51cd00 !important;
+    --identity-stroke-color: #51cd00 !important;
+  }
+  .identity-color-yellow {
+    --identity-fill-color: #ffcb00 !important;
+    --identity-stroke-color: #ffcb00 !important;
+  }
+  .identity-color-orange {
+    --identity-fill-color: #ff9f00 !important;
+    --identity-stroke-color: #ff9f00 !important;
+  }
+  .identity-color-red {
+    --identity-fill-color: #ff613d !important;
+    --identity-stroke-color: #ff613d !important;
+  }
+  .identity-color-pink {
+    --identity-fill-color: #ff4bda !important;
+    --identity-stroke-color: #ff4bda !important;
+  }
+  .identity-color-purple {
+    --identity-fill-color: #af51f5 !important;
+    --identity-stroke-color: #af51f5 !important;
+  }
+  .identity-color-violet {
+    --identity-fill-color #764edd !important;
+    --identity-stroke-color: #764edd !important;
+  }
+  .identity-color-gray {
+    --identity-fill-color: light-dark(var(--color-gray-80), var(--color-gray-40)) !important;
+    --identity-stroke-color: var(--color-gray-60) !important;
+  }
+  /*= URLbar =================================================================*/
+  /* Height */
+  :root[uidensity="compact"] {
+    --urlbar-height: max(26px, 1.4em) !important; /* instead of 28px */
+  }
+  /*= Sidebar ================================================================*/
+  :root[uidensity="compact"] {
+    --sidebar-panel-list-item-height: 22px !important;
+    --sidebar-panel-subheading-min-height: 26px !important;
+  }
+}

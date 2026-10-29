@@ -1,0 +1,7 @@
+th[is=tree-view-table-header-cell][data-type=icon].last-column button.button-column-picker {
+  display: none !important;
+}
+th[is=tree-view-table-header-cell][data-type=icon].last-column {
+  inline-size: var(--table-header-cell-icon-width) !important;
+  min-inline-size: var(--table-header-cell-icon-width) !important;
+}

@@ -1,0 +1,151 @@
+@charset "UTF-8";
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+@-moz-document url("about:home"), url("about:newtab") {
+  .wallpaper-attribution {
+    display: none !important;
+  }
+  @media -moz-pref("userChrome+Content.newtab.image.BibleStudy"),
+         -moz-pref("userChrome+Content.newtab.image.BibleStudy1"),
+         -moz-pref("userChrome+Content.newtab.image.BibleStudy2"),
+         -moz-pref("userChrome+Content.newtab.image.AlleenZijn"),
+         -moz-pref("userChrome+Content.newtab.image.Begrepen"),
+         -moz-pref("userChrome+Content.newtab.image.Bidden"),
+         -moz-pref("userChrome+Content.newtab.image.ZichzelfZijn") {
+    html:not(.private) body {
+      background-size: contain !important;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+      @media -moz-pref("userChrome+Content.newtab.image.BibleStudy") {
+        background-image: url("./images/BibleStudy.png") !important;
+        background-color: lightgreen !important;
+      }
+      @media -moz-pref("userChrome+Content.newtab.image.BibleStudy1") {
+        background-image: url("./images/BibleStudy1.png") !important;
+        background-color: lightgreen !important;
+      }
+      @media -moz-pref("userChrome+Content.newtab.image.BibleStudy2") {
+        background-image: url("./images/BibleStudy2.png") !important;
+        background-color: lightgreen !important;
+      }
+      @media -moz-pref("userChrome+Content.newtab.image.AlleenZijn") {
+        background-image: url("./images/alleen_zijn.png") !important;
+        background-color: #529cbf !important;
+      }
+      @media -moz-pref("userChrome+Content.newtab.image.Begrepen") {
+        background-image: url("./images/begrepen.jpg") !important;
+        background-color: black !important;
+      }
+      @media -moz-pref("userChrome+Content.newtab.image.Bidden") {
+        background-image: url("./images/bidden.png") !important;
+        background-color: #d5a976 !important;
+      }
+      @media -moz-pref("userChrome+Content.newtab.image.ZichzelfZijn") {
+        background-image: url("./images/zichzelf_zijn.png") !important;
+        background-color: black !important;
+      }
+      .search-wrapper,
+      .top-sites-list-wrapper {
+        opacity: 0.7;
+      }
+      @media -moz-pref("browser.newtabpage.activity-stream.hideLogo") {
+        .search-inner-wrapper {
+          margin-top: -40px !important;
+        }
+      }
+    }
+  }
+}
+
+/** Nova improvements *********************************************************/
+@media -moz-pref("browser.nova.enabled") {
+  /*= Restore Firefox Proton border radii in Nova ============================*/
+  @-moz-document url-prefix("about:"), url-prefix("chrome:") {
+    :root {
+      /* Nova → Proton design tokens */
+      --border-radius-xsmall: 2px !important;
+      --border-radius-small: 4px !important;
+      --border-radius-medium: 8px !important;
+      --border-radius-large: 16px !important;
+      --border-radius-xlarge: 16px !important;
+      --border-radius-circle: 99999px !important;
+      /* Component-specific tokens */
+      --button-border-radius: 4px !important;
+      --toolbarbutton-border-radius: 4px !important;
+      --tab-border-radius: 4px !important;
+      --urlbar-icon-border-radius: 4px !important;
+      --arrowpanel-border-radius: 8px !important;
+      --panel-border-radius: 8px !important;
+      --panel-menuitem-border-radius: 4px !important;
+      --menuitem-border-radius: 4px !important;
+      --popup-border-radius: 8px !important;
+      --input-text-border-radius: 4px !important;
+      --card-border-radius: 8px !important;
+      --card-border-radius-compact: 4px !important;
+      --card-cover-image-border-radius: 4px !important;
+    }
+    /* Common controls on internal pages */
+    button,
+    input,
+    select,
+    textarea,
+    a[href],
+    .card,
+    .toggle-button {
+      border-radius: var(--border-radius-medium) !important;
+    }
+    /* Common larger containers */
+    dialog,
+    [popover],
+    .panel,
+    .card-container {
+      border-radius: var(--border-radius-medium) !important;
+    }
+    /* Search bar New Tab */
+    .search-handoff-button {
+      border-radius: var(--border-radius-circle) !important;
+    }
+    /*= Identity Color =======================================================*/
+    .identity-color-blue {
+      --identity-fill-color: #37adff !important;
+      --identity-stroke-color: #37adff !important;
+    }
+    .identity-color-cyan {
+      --identity-fill-color: #00c79a !important;
+      --identity-stroke-color: #00c79a !important;
+    }
+    .identity-color-green {
+      --identity-fill-color: #51cd00 !important;
+      --identity-stroke-color: #51cd00 !important;
+    }
+    .identity-color-yellow {
+      --identity-fill-color: #ffcb00 !important;
+      --identity-stroke-color: #ffcb00 !important;
+    }
+    .identity-color-orange {
+      --identity-fill-color: #ff9f00 !important;
+      --identity-stroke-color: #ff9f00 !important;
+    }
+    .identity-color-red {
+      --identity-fill-color: #ff613d !important;
+      --identity-stroke-color: #ff613d !important;
+    }
+    .identity-color-pink {
+      --identity-fill-color: #ff4bda !important;
+      --identity-stroke-color: #ff4bda !important;
+    }
+    .identity-color-purple {
+      --identity-fill-color: #af51f5 !important;
+      --identity-stroke-color: #af51f5 !important;
+    }
+    .identity-color-violet {
+      --identity-fill-color: #764edd !important;
+      --identity-stroke-color: #764edd !important;
+    }
+    .identity-color-gray {
+      --identity-fill-color: light-dark(var(--color-gray-80), var(--color-gray-40)) !important;
+      --identity-stroke-color: var(--color-gray-60) !important;
+    }
+  }
+}

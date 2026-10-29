@@ -1,7 +1,10 @@
 # UserChrome
 `userChrome.css` and `userContent.css` for FireFox, Thunderbird and Betterbird
 
-These are my personal improvements.
+## Why this repository
+These are my personal improvements.  
+For Firefox it reversed to ugly new Nova stuff.  
+For Thunder&Betterbird it removes a column picker in the mail box.  
 
 ## How to install
 1. `about:config`
@@ -17,6 +20,9 @@ These are my personal improvements.
    and set one of them on true  
    (last four images are Dutch quotes)
 4. download the css files
-5. head over the your user profile folder of Firefox of Thunderbird or Betterbird
+5. head over the your user profile folder of Firefox, Thunderbird or Betterbird
 6. make a folder called `chrome`
 7. put the downloaded files there
+
+## Improvements or suggestions
+For any suggestions, improvements or bugs, feel free to open an issue or pull request.
